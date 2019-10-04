@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      tools:context=".ui.details.ContactDetailsActivity"
+      tools:showIn="@layout/activity_contact_details"
+      >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_details_phone_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_details_phone_number"
+        app:srcCompat="@drawable/ic_phone_black_24dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_details_contact_full_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@{@string/contact_full_name(contact.firstName, contact.lastName)}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mli_contact_details"
+        tools:text="@tools:sample/full_names"
+        />
+
+    <TextView
+        android:id="@+id/tv_details_phone_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@{contact.phoneNumber}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:text="@tools:sample/us_phones"
+        />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_contact_full_name"
+        />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_phone_number"
+        />
+
+    <com.github.ivbaranov.mli.MaterialLetterIcon
+        android:id="@+id/mli_contact_details"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mli_initials="false"
+        app:mli_initials_number="2"
+        app:mli_letter_color="@android:color/white"
+        app:mli_letters_number="1"
+        app:mli_shape_type="circle"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        >
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/tiet_opt_message"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/contact_details_hint_message"
+          />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <data>
+
+    <variable
+        name="contact"
+        type="com.kisannetwork.contacts.sample.model.Contact"
+        />
+  </data>
+</layout>
